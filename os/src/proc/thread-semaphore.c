@@ -40,9 +40,9 @@ int main() {
 
 void *func(void *arg) {
   sem_wait(&sem);
-  while( buf[0] != '\0' ) {
+  while( buf[0] != '\0' ) { /* not Ctrl-d */
     printf("You input %ld characters\n", strlen(buf)-1);
-	buf[0] = '\0';	   /* in case of Ctrl-d */
+	buf[0] = '\0';          /* clear buffer */
     sem_wait(&sem);
   }
   pthread_exit(NULL);

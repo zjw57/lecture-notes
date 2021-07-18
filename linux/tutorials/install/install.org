@@ -32,47 +32,42 @@
 
 【注意事项】为了避免不必要的麻烦：
 
-1. 不要选择图形界面安装；
-2. 不要选择中文安装界面；
-3. 不要为root设置密码；
-4. 安装过程中不要联网；
+1. 不要选择图形界面安装（Graphical Install）； *不要图形界面*; *不要图形界面*; 
+2. 不要选择中文安装界面； *不要中文*; *不要中文*; 
+3. 不要为root设置密码; *不要root密码*; *不要root密码*;
+4. 安装过程中不要联网; *不要联网*; *不要联网*;
 5. 只要两个分区 =swap= 和 =/= ，换言之，不要 =/boot, /home, /var, ...= 等分区。
 
 安装Debian最小系统的大致步骤如下：
 
-1. 先准备好一个安装盘（LiveUSB）。
-   1) *下载:* [[http://mirrors.ustc.edu.cn/debian-cd/current/amd64/iso-cd/][http://mirrors.ustc.edu.cn/debian-cd/current/amd64/iso-cd/]]
-      - 该目录中有四个（也许更多）iso文件，比如：
+1. 先准备好一个安装盘（LiveUSB）
+   1) *下载:* [[https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/]]
+      - 该目录中有两个（也许更多）iso文件，下载名字最短的那个就好。比如：
         #+begin_example
-			debian-10.10.0-amd64-netinst.iso    <- 只要这个
-			debian-10.10.0-amd64-xfce-CD-1.iso  
-			debian-edu-10.10.0-amd64-netinst.iso
-			debian-mac-10.10.0-amd64-netinst.iso
+        firmware-10.10.0-amd64-netinst.iso      <- 只要这个
+        firmware-edu-10.10.0-amd64-netinst.iso
         #+end_example
-        下载名字最短的那个就好。
+        
    2) *制作U盘:* 在Debian/Ubuntu平台上制作启动U盘非常简单，敲个命令就行了：
       #+BEGIN_SRC sh
-      sudo cp debian-10.10.0-amd64-netinst.iso /dev/sdX
-      sync
+        sudo cp fir<TAB> /dev/sdX  # <TAB> 指的是键盘上的 TAB 键，它能帮你补全文件名。
+                                   # 把 sdX 换成 sdb 或者 sdc。用 lsblk 命令看一眼，
+                                   # 就知道是 b 还是 c 了。
+        sync
       #+END_SRC
       【注意】
-      1. 把 =debian-10.10.0-amd64-netinst.iso= 换成你下载的iso文件的名字。文件名太长容易敲错，
-         那么就尽量用TAB键来补全。比如说，对于上面的长命令，你只需要键入前几个字母：
-         : sudo cp deb
-         然后按一下 =TAB= 键，长长的文件名就自动都补全了。
-      2. 把 =X= 换成你的U盘对应的字母。用 =lsblk= 看一眼，你就知道是哪个字母了，通常不是b就是c。
-      3. *如果没有现成的Linux系统，只有Windows可用，怎么做启动U盘？* 抱歉，我也不知道。我
-         知道肯定可以，而且见人做过，只不过我真的不用Windows，所以真的不关心。
-2. 拔掉网线，从U盘重启系统，开始安装。大概半个小时，一个“最小系统”就装好了。「拔掉网线」只
-   是我个人的习惯，并不是必须的。联网安装的话，可能会遭遇若干问题：
+      - *如果没有现成的Linux系统，只有Windows可用，怎么做启动U盘？* 抱歉，我也不知道。我
+        知道肯定可以，而且见人做过，只不过我真的不用Windows，所以真的不关心。
+2. 拔掉网线，从U盘重启系统，开始安装。大概半个小时，一个“最小系统”就装
+   好了。「拔掉网线」只是我的个人习惯，并不是必须的。联网安装的话，可能会遭遇若干问题：
    1) 如果网络不畅，安装过程会很慢，甚至失败；
    2) 现在时髦的笔记本都不带有线网口，如果选择联网安装，安装过程中就要涉及安装网卡驱动、输
       入无线密码等步骤，麻烦多多；
    3) 联网安装，系统还会提示你选择镜像源、选择要安装的“全家桶”，这些貌似友好的功能选项，在
       我看弊大于利，只能增加入门者的困扰。
-
-3. 【注意】
-   + 安装的时候不要选择中文语言环境，因为后面的安装配置工作都是在非图形环境下进行，
+3. 完事后，拔掉U盘，重启系统。
+4. 【注意】
+   + 安装的时候 *不要选择中文语言环境*, 因为后面的安装配置工作都是在非图形环境下进行，
      采用中文的话，你很可能会遭遇乱码。
    + 提示你“Loading missing firmware”的时候，选择“NO”。
    + “Configure the network”的时候，选择一连串的“Cancel”，直到你看到“Do not configure the
@@ -86,41 +81,71 @@
      3. 装了双系统之后，通常（不争气的）你会选用熟悉的Windows系统，渐渐地，过不了多久，你就忘了电
         脑上还有一个Linux系统。
      所以，我很不愿意搭理装双系统的人。
-4. 完事后，拔掉U盘，重启系统。
+
 
 * 安装完整系统
 
-** 好消息
+好消息！现在，你只要下载并运行[[https://cs6.swfu.edu.cn/~wx672/debian-install/install.sh][这个小程序]]，就可以得到一个完整的Debian系统了。
 
-现在，你只要下载并运行[[https://cs6.swfu.edu.cn/~wx672/debian-install/install.sh][这个小程序]]，就可以得到一个完整的Debian系统了。
-- 下载：
-  : cd
-  : scp fai@cs6.swfu.edu.cn:install.sh ./
-  : fai@cs6.swfu.edu.cn's password: fai
+1. 联网。当然要先插好网线。如果你的笔记本比较新潮，没有有线网口，那么可以试试下面两个办法：
+   - 你可以利用手机的 Ethernet tethering 功能，详见第[[* 附录：没有有线网卡怎么办？]]节。
+   - 找一个USB-Ethernet转接头。十几块钱就能买一个。
+
+   总之，现在刚装完最小系统，无线网很可能还不好使。连好网线，再敲下面的命令，应该就能连上网了。
+
+   #+begin_src sh
+	 sudo dhclient
+   #+end_src
   
-- 运行：
-  : chmod +x install.sh
-  : ./install.sh
+2. 下载
+
+   #+begin_src sh
+	 cd
+	 wget cs6.swfu.edu.cn/~wx672/debian-install/install.sh
+   #+end_src
+
+3. 运行
+
+   #+begin_src sh
+	 chmod +x install.sh
+	 ./install.sh
+   #+end_src
   
-  网络顺畅的话，半个小时应该就完事了。不顺畅的话……把网络搞顺畅了再说吧。
+   网络顺畅的话，半个小时应该就完事了。不顺畅的话……把网络搞顺畅了再说吧。
 
-  装好之后……
+   *程序运行过程中，会不时给出英文提示，千万要耐心看明白，然后再操作。*
 
-- 重启系统。不出意外的话，重启之后你看到的会是一个纯黑色的、光秃秃的桌面，只有一个傻大傻大
-  的鼠标箭头指在屏幕的中央。没错，这就是我们的桌面，干干净净，啥都没有。但是你可以：
-  1. 敲 =Super-t= 打开一个终端窗口，在里面敲命令；
-  2. 敲 =Super-F1= 打开“帮助墙纸”；
-  3. 用 =nmtui= 来配置无线网；
-  4. 用 =Shift-space= 来激活中文输入法；
-  5. 还有很多 =Super= 开头的快捷键，自己慢慢去探索吧。
+   *不要忽略任何一个提示！不要忽略提示！不要忽略提示！*
 
-如果重启之后，你看不到那个傻大傻大的鼠标箭头，那么十之八九是因为你的显卡太高级了（是
-Nvidia?）。你可以尝试关掉这个高级显卡，暂时使用主板上的内置显卡。通常内置显卡要么是Intel的，
-要么就是AMD的，Linux都支持得很好。具体操作如下：
+   装好之后……
+
+4. 重启系统。不出意外的话，重启之后，你看到的应该就是一个终端窗口，除此之外，啥都没有，干净得令你失望。
+   默认的窗口管理器（Window manager）是DWM，你可以：
+   - 用 =nmtui= 来配置无线网；
+   - 用 =Shift-space= 来激活中文输入法；
+   - 用 =Super-q= 打开浏览器； 
+   - 用 =Super-l= 弹出窗口列表；
+   - 用 =Super-F1= 打开“帮助墙纸”；
+   - 还有很多 =Super= 开头的快捷键，自己慢慢去探索吧。
+
+   敲 =Super-t= 应该能打开终端窗口。如果 =Super-t= 不起作用，
+   那肯定是 =x-terminal-emulator= 没设置好（ =install.sh= 的bug）。
+   自己设置一下吧，敲 =Super-ESC alacritty= 打开终端，然后：
+   #+begin_src sh
+     sudo update-alternatives --install \
+          /usr/bin/x-terminal-emulator x-terminal-emulator $(type -p alacritty) 0
+    
+     sudo update-alternatives --set x-terminal-emulator $(type -p alacritty)
+   #+end_src
+   如此设置完毕，以后再敲 =Super-t= 就可以打开终端了。
+
+如果重启之后，你看不到浏览器、终端、墙纸……，那么肯定是图形界面没起来，十之八九是
+因为你的显卡太高级了（是Nvidia?）。你可以尝试关掉这个高级显卡，暂时使用主板上的内置显卡。
+通常内置显卡要么是Intel的，要么就是AMD的，它们对Linux都很友好。具体操作如下：
 
 1. 卸掉Nvidia驱动
    #+begin_src sh
-     sudo apt purge xserver-xorg-video-nvidia xserver-xorg-video-nouveau
+     sudo apt purge xserver-xorg-video-{nvidia,nouveau}
    #+end_src
 
    用 =lspci= 命令查看一下显卡的牌子。如果是Intel显卡，就安装Intel的显卡驱动：
@@ -133,6 +158,11 @@ Nvidia?）。你可以尝试关掉这个高级显卡，暂时使用主板上的�
      sudo apt install xserver-xorg-video-amdgpu
    #+end_src
        
+   如果是Radeon显卡，就安装ATI的显卡驱动：
+   #+begin_src sh
+     sudo apt install xserver-xorg-video-ati
+   #+end_src
+
    之后，重启。如果还不灵，你就自己去google吧。Have fun!
   
 ** 老办法（可以不看了）

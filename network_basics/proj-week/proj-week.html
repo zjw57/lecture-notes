@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-06-11 Fri 10:52 -->
+<!-- 2022-06-14 Tue 10:44 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hacking with Linux networking command line tools</title>
@@ -41,19 +41,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga1d6be9">1. Caution</a></li>
-<li><a href="#orge7dd50f">2. <code>tmux, nc, ip, tcpdump, ss, nmap, curl</code></a></li>
+<li><a href="#orge2e6ba1">1. Caution</a></li>
+<li><a href="#orge7ab75b">2. <code>tmux, nc, ip, tcpdump, ss, nmap, curl</code></a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga1d6be9" class="outline-2">
-<h2 id="orga1d6be9"><span class="section-number-2">1.</span> Caution</h2>
+<div id="outline-container-orge2e6ba1" class="outline-2">
+<h2 id="orge2e6ba1"><span class="section-number-2">1.</span> Caution</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
 You must submit your report as a <code>tar ball</code> in which the following files should be
-included:
+included in:
 </p>
 
 <ol class="org-ol">
@@ -86,17 +86,17 @@ as an example.</li>
 <li>Here's how :: 
 <ol class="org-ol">
 <li><p>
-make a directory, e.g. 20201159xxx. In this directory, try very hard to make all
+make a directory, e.g. 20201159xxx, in this dir try very hard to make all
 the files available.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-sh">mkdir  20201159xxx
-<span style="color: #ff8A65;">cd</span> 20201159xxx
-emacsclient tmux-http.sh <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">write your script</span>
-emacsclient 20201159xxx.org <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">this is your report</span>
-vim 20201159xxx.md <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">in markdown format</span>
-ttyrec http-demo.ttyrec <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">make your demo screencast</span>
+<span style="color: #ff8A65; font-weight: bold;">cd</span> 20201159xxx
+emacsclient tmux-http.sh <span style="color: #b0bec5;"># </span><span style="color: #b0bec5; font-style: italic;">write your script</span>
+emacsclient 20201159xxx.org <span style="color: #b0bec5;"># </span><span style="color: #b0bec5; font-style: italic;">this is your report</span>
+vim 20201159xxx.md <span style="color: #b0bec5;"># </span><span style="color: #b0bec5; font-style: italic;">in markdown format</span>
+ttyrec http-demo.ttyrec <span style="color: #b0bec5;"># </span><span style="color: #b0bec5; font-style: italic;">make your demo screencast</span>
 </pre>
 </div></li>
 
@@ -126,19 +126,19 @@ ttyplay  tutorial.ttyrec
 
 
 <p>
-Feel free to make your own <code>ttyrec</code> file while doing this lab work. For example:
+Feel free to make your own <code>ttyrec</code> files while doing this lab work. For example:
 </p>
 
-<pre class="example" id="org0846600">
+<pre class="example" id="orgff66839">
 ttyrec  20201159xxx-http.ttyrec
 ttyrec  20201159xxx-email.ttyrec
 ttyrec  20201159xxx-ftp.ttyrec
 </pre></li>
 
-<li><b>Deadline:</b> <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-07-10 Sat&gt; </span></span> 
+<li><b>Deadline:</b> <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-06-25 Sat&gt;</span></span>
 
 <ul class="org-ul">
-<li>Submit your report as a <code>tgz</code> file <a href="https://cs6.swfu.edu.cn/moodle/mod/assign/view.php?id=536">here</a>. In your <code>tgz</code> file, there must be:
+<li>Submit your report as a <code>tgz</code> file <a href="https://cs6.swfu.edu.cn/moodle/mod/assign/view.php?id=659">here</a>. In your <code>tgz</code> file, there must be:
 <ol class="org-ol">
 <li>your report in <code>org</code> or <code>markdown</code> format</li>
 <li>your report in HTML format</li>
@@ -155,8 +155,8 @@ work.</li>
 </div>
 </div>
 
-<div id="outline-container-orge7dd50f" class="outline-2">
-<h2 id="orge7dd50f"><span class="section-number-2">2.</span> <code>tmux, nc, ip, tcpdump, ss, nmap, curl</code></h2>
+<div id="outline-container-orge7ab75b" class="outline-2">
+<h2 id="orge7ab75b"><span class="section-number-2">2.</span> <code>tmux, nc, ip, tcpdump, ss, nmap, curl</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Here are the bash scripts I used in the class for demostrating how some protocols work.
@@ -172,7 +172,9 @@ Here are the bash scripts I used in the class for demostrating how some protocol
 <hr>
 
 <dl class="org-dl">
-<dt>Your tasks</dt><dd><ol class="org-ol">
+<dt>Your tasks</dt><dd>(Deadline: <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-06-25 Sat&gt;</span></span>)
+
+<ol class="org-ol">
 <li>Run the above scripts to get familar with these tools, and get a thorough understanding about these protocols;</li>
 
 <li><p>
@@ -188,15 +190,16 @@ sudo tcpdump -ilo -nnvvvxXKS -s0 port 3333
 the following packet is captured:
 </p>
 
-<pre class="example" id="org2cc2f77">
-08:34:10.790666 IP (tos 0x0, ttl 64, id 12824, offset 0, flags [DF], proto TCP (6),
-length 64)
-    127.0.0.1.46668 &gt; 127.0.0.1.3333: Flags [P.], seq 2400005725:2400005737, ack 373279396,
-    win 512, options [nop,nop,TS val 3259949783 ecr 3259896343], length 12
-        0x0000:  4500 0040 3218 4000 4006 0a9e 7f00 0001  E..@2.@.@.......
-        0x0010:  7f00 0001 b64c 0d05 8f0d 2e5d 163f caa4  .....L.....].?..
-        0x0020:  8018 0200 fe34 0000 0101 080a c24e e2d7  .....4.......N..
-        0x0030:  c24e 1217 6865 6c6c 6f20 776f 726c 640a  .N..hello.world.
+<pre class="example" id="orgbcff990">
+08:34:10.790666 IP (tos 0x0, ttl 64, id 12824, offset 0, flags [DF],
+proto TCP (6), length 64)
+127.0.0.1.46668 &gt; 127.0.0.1.3333: Flags [P.], seq 2400005725:2400005737,
+ack 373279396, win 512, options [nop,nop,TS val 3259949783 ecr 3259896343],
+length 12
+    0x0000:  4500 0040 3218 4000 4006 0a9e 7f00 0001  E..@2.@.@.......
+    0x0010:  7f00 0001 b64c 0d05 8f0d 2e5d 163f caa4  .....L.....].?..
+    0x0020:  8018 0200 fe34 0000 0101 080a c24e e2d7  .....4.......N..
+    0x0030:  c24e 1217 6865 6c6c 6f20 776f 726c 640a  .N..hello.world.
 </pre>
 
 <ol class="org-ol">
@@ -215,7 +218,7 @@ length 64)
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Xiaolin Wang</p>
-<p class="date">Created: 2021-06-11 Fri 10:52</p>
+<p class="date">Created: 2022-06-14 Tue 10:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

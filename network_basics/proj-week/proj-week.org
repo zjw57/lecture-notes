@@ -9,12 +9,13 @@
 #+KEYWORDS: ssh, tmux, http, ftp, smtp, iptables, network, networking
 #+LANGUAGE: en
 #+SELECT_TAGS: export
-#+LATEX_HEADER: \usepackage{wx672common,wx672fonts}
+#+LATEX_CLASS: article
+#+LATEX_HEADER: \usepackage{wx672minted}
 #+LATEX_HEADER: \pagestyle{plain}
 
 * Caution
   - You must submit your report as a =tar ball= in which the following files should be
-    included:
+    included in:
 
     1. Your report in either =Emacs Org= or =Markdown= format, and a HTML file
        generated from your =org= or =md= file.
@@ -35,7 +36,7 @@
 
     ------
     1. Here's how :: 
-       1. make a directory, e.g. 20201159xxx. In this directory, try very hard to make all
+       1. make a directory, e.g. 20201159xxx, in this dir try very hard to make all
           the files available.
 
           #+begin_src sh
@@ -64,7 +65,7 @@
 
     : ttyplay  tutorial.ttyrec
 
-    Feel free to make your own =ttyrec= file while doing this lab work. For example:
+    Feel free to make your own =ttyrec= files while doing this lab work. For example:
 
     #+begin_example
     ttyrec  20201159xxx-http.ttyrec
@@ -72,9 +73,9 @@
     ttyrec  20201159xxx-ftp.ttyrec
     #+end_example
        
-  - *Deadline:* <2021-07-10 Sat> 
+  - *Deadline:* <2022-06-25 Sat>
 
-    - Submit your report as a =tgz= file [[https://cs6.swfu.edu.cn/moodle/mod/assign/view.php?id=536][here]]. In your =tgz= file, there must be:
+    - Submit your report as a =tgz= file [[https://cs6.swfu.edu.cn/moodle/mod/assign/view.php?id=659][here]]. In your =tgz= file, there must be:
       1. your report in =org= or =markdown= format
       2. your report in HTML format
       3. your bash script for demostrating a HTTP session
@@ -96,7 +97,8 @@ Here are the bash scripts I used in the class for demostrating how some protocol
 
 ----------------------------
 
-- Your tasks :: 
+- Your tasks :: (Deadline: <2022-06-25 Sat>)
+
   1. Run the above scripts to get familar with these tools, and get a thorough understanding about these protocols;
 
   2. Packet analysis. Upon running the following command:
@@ -106,14 +108,15 @@ Here are the bash scripts I used in the class for demostrating how some protocol
      the following packet is captured:
 
      #+begin_example
-     08:34:10.790666 IP (tos 0x0, ttl 64, id 12824, offset 0, flags [DF], proto TCP (6),
-     length 64)
-         127.0.0.1.46668 > 127.0.0.1.3333: Flags [P.], seq 2400005725:2400005737, ack 373279396,
-         win 512, options [nop,nop,TS val 3259949783 ecr 3259896343], length 12
-             0x0000:  4500 0040 3218 4000 4006 0a9e 7f00 0001  E..@2.@.@.......
-             0x0010:  7f00 0001 b64c 0d05 8f0d 2e5d 163f caa4  .....L.....].?..
-             0x0020:  8018 0200 fe34 0000 0101 080a c24e e2d7  .....4.......N..
-             0x0030:  c24e 1217 6865 6c6c 6f20 776f 726c 640a  .N..hello.world.
+     08:34:10.790666 IP (tos 0x0, ttl 64, id 12824, offset 0, flags [DF],
+     proto TCP (6), length 64)
+     127.0.0.1.46668 > 127.0.0.1.3333: Flags [P.], seq 2400005725:2400005737,
+     ack 373279396, win 512, options [nop,nop,TS val 3259949783 ecr 3259896343],
+     length 12
+         0x0000:  4500 0040 3218 4000 4006 0a9e 7f00 0001  E..@2.@.@.......
+         0x0010:  7f00 0001 b64c 0d05 8f0d 2e5d 163f caa4  .....L.....].?..
+         0x0020:  8018 0200 fe34 0000 0101 080a c24e e2d7  .....4.......N..
+         0x0030:  c24e 1217 6865 6c6c 6f20 776f 726c 640a  .N..hello.world.
      #+end_example
 
      1. Tell me the meaning of each option used in the previous command;
